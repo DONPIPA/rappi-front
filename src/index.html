@@ -10,15 +10,31 @@
 <body>
   <header class="header">
     <div class="header-button">
-      <i class="fa fa-bars"></i>
+      <i class="fa fa-filter"></i>
     </div>
     <div class="header-cart empty">
       <i class="fa fa-shopping-basket"></i>
     </div>
   </header>
 
+  <div class="filters is-hide">
+    <div class="filters-list"></div>
+    <div class="filters-cta">
+      <button class="filters-button-apply button">Apply</button>
+    </div>
+  </div>
+
   <section class="products">
   </section>
+
+  <template id="filter">
+    <div class="filter">
+      <div class="filter-icon"></div>
+      <span class="filter-label">
+        Drinks
+      </span>
+    </div>
+  </template>
 
   <template id="product">
     <div class="product">

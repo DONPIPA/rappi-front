@@ -41,6 +41,10 @@
       border-right: 0;
     }
   }
+
+  &.is-hide {
+    display: none;
+  }
 }
 
 .product-header {
