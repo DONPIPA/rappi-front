@@ -1,0 +1,22 @@
+//vendors
+
+@import 'vendors/normalize';
+@import 'vendors/fontawesome';
+
+// modules
+
+@import 'modules/variables';
+@import 'modules/breakpoints';
+@import 'modules/button';
+
+// components
+
+@import 'components/header';
+@import 'components/products';
+@import 'components/product';
+
+// default
+
+body {
+  color: $gray-dark;
+}

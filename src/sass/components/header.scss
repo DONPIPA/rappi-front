@@ -1,0 +1,36 @@
+.header {
+  background-color: $red;
+  color: $white;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.header-button {
+  font-size: 32px;
+}
+
+.header-cart {
+  font-size: 32px;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+
+  &:not(.empty) {
+    &::before {
+      background-color: $red;
+      border: 2px solid $white;
+      border-radius: 50%;
+      bottom: 0;
+      content: attr(count);
+      font-size: 10px;
+      font-weight: bold;
+      height: 15px;
+      line-height: 1.3;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      transform: translate(30%, 30%);
+      width: 15px;
+    }
+  }
+}
