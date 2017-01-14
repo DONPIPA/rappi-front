@@ -1,6 +1,12 @@
 'use strict';
 
 const $cart = document.querySelector('.header-cart');
+const categoriesClass = {
+  'drinks': 'glass',
+  'lunch': 'cutlery',
+  'food': 'apple',
+  'sea': 'tint'
+};
 let products;
 let categories;
 let cart = [];
@@ -27,6 +33,10 @@ function addToCart(event) {
   }
 }
 
+function findCategory(category) {
+  return category.categori_id === this;
+}
+
 function generateProducts() {
   const container = document.querySelector('.products');
 
@@ -41,6 +51,16 @@ function generateProducts() {
       template.content.querySelector('.product-button-add').setAttribute('product-id', index);
 
       const box = document.importNode(template.content, true);
+
+      product.categories.forEach((category) => {
+        const categoryData = categories.find(findCategory, category);
+        const categoryClass = categoriesClass[categoryData.name];
+        const icon = document.createElement('i');
+        icon.classList.add('fa');
+        icon.classList.add('fa-' + categoryClass);
+        box.querySelector('.product-categories').appendChild(icon);
+      });
+
 
       box.querySelector('.product-button-add').addEventListener('click', addToCart);
 
