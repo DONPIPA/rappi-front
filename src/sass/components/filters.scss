@@ -40,9 +40,8 @@
   }
 
   &.is-selected {
-    .filter-icon {
-      color: $green;
-    }
+    background-color: $red;
+    color: $white;
   }
 
   .filter-icon {
@@ -55,4 +54,10 @@
 .filter-label,
 .filter-icon {
   pointer-events: none;
+}
+
+.filters-label {
+  border-top: 1px solid $gray;
+  padding: 10px 20px;
+  width: 100%;
 }
