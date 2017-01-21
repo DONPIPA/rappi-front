@@ -42,6 +42,10 @@
   &.is-selected {
     background-color: $red;
     color: $white;
+
+    .filter-icon {
+      color: $white;
+    }
   }
 
   .filter-icon {

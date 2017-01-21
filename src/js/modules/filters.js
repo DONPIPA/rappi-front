@@ -39,8 +39,6 @@ function addCustomFilter(event) {
     }
   }
 
-  console.log(priceFilter);
-
   button.classList.toggle('is-selected');
 }
 
@@ -62,9 +60,9 @@ function applyFilters() {
 
   products.forEach((product) => {
     const categories = product.getAttribute('categories').split(',');
-    let isShowCategories = false;
-    let isShowCustom = false;
-    let isShowPrice = false;
+    let isShowCategories = true;
+    let isShowCustom = true;
+    let isShowPrice = true;
     let isShow = true;
 
     if (filters.length > 0) {
@@ -84,19 +82,21 @@ function applyFilters() {
       isShowPrice = Object.keys(priceFilter).reduce((last, filter) => {
         const value = product.getAttribute('price');
 
-        console.log(value, filter);
+        let result = true;
 
-        if (priceFilter[filter] === '>') {
-          return value >= filter;
+        if (priceFilter[filter].type === '>') {
+          result =  parseInt(value) >= parseInt(filter);
         } else {
-          return value <= filter;
+          result = parseInt(value) <= parseInt(filter);
         }
+
+        return result || last;
       }, false);
     } else {
       isShowPrice = true;
     }
 
-    isShow = isShowCategories || isShowCustom || isShowPrice;
+    isShow = isShowCategories && isShowCustom && isShowPrice;
 
     if (isShow) {
       product.classList.remove('is-hide');

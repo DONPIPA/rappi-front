@@ -6,6 +6,7 @@ const $cart = document.querySelector('.header-cart');
 let products;
 let categories;
 let cart = [];
+let totalProducts = 0;
 
 function addToCart(event) {
   const button = event.target;
@@ -20,7 +21,13 @@ function addToCart(event) {
     cart[id].quantity++;
   }
 
-  $cart.setAttribute('count', cart.length);
+  totalProducts = 0;
+
+  Object.keys(cart).forEach((key) => {
+    totalProducts += cart[key].quantity;
+  });
+
+  $cart.setAttribute('count', totalProducts);
 
   if (cart.length > 0) {
     $cart.classList.remove('empty');
