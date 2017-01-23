@@ -1,6 +1,8 @@
 .header {
   background-color: $red;
   color: $white;
+  display: flex;
+  justify-content: space-between;
   padding: 15px 20px;
   position: relative;
 }
@@ -15,9 +17,6 @@
 .header-cart {
   cursor: pointer;
   font-size: 32px;
-  position: absolute;
-  right: 20px;
-  top: 15px;
 
   &:not(.empty) {
     &::before {
@@ -36,5 +35,56 @@
       transform: translate(30%, 30%);
       width: 15px;
     }
+  }
+}
+
+.header-sort-wrapper {
+  font-size: 32px;
+  position: relative;
+}
+
+.header-sort {
+  cursor: pointer;
+}
+
+.header-sort-box {
+  background-color: $red;
+  bottom: -10px;
+  height: 0;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  transform: translate(-50%, 100%);
+  z-index: 10;
+
+  &.is-open {
+    height: auto;
+  }
+}
+
+.header-sort-container {
+  display: flex;
+  padding: 10px;
+}
+
+.header-sort-icon {
+  background-color: $white;
+  border-radius: 50%;
+  color: $red;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  margin: 5px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  width: 32px;
+
+  .fa {
+    color: $white;
+    font-size: .3em;
+    position: absolute;
+    right: -5px;
+    top: 0;
   }
 }

@@ -6,6 +6,8 @@ const data = require('./modules/data');
 const products = require('./modules/products');
 const filters = require('./modules/filters');
 const cart = require('./modules/cart');
+const order = require('./modules/order');
+
 const cartHandler = {
   set: (target, key, value) => {
     target[key] = value;
@@ -42,10 +44,10 @@ function init() {
       });
     }
 
-
     products.init(shopCart, globalProducts, globalCategories);
     cart.init(shopCart, globalProducts);
     filters.init(globalCategories);
+    order.init(globalProducts);
   });
 }
 

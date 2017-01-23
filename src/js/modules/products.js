@@ -50,11 +50,12 @@ function generateProducts() {
     let template = document.querySelector('#product');
 
     products.forEach((product) => {
-      template.content.querySelector('.product-price').textContent = '$' + product.price;
+      template.content.querySelector('.product-price').textContent = `$${product.price}`;
       template.content.querySelector('.product-image img').src = product.img;
       template.content.querySelector('.product-name').textContent = product.name;
       template.content.querySelector('.product-details').textContent = product.description;
       template.content.querySelector('.product-button-add').setAttribute('product-id', product.id);
+      template.content.querySelector('.product').setAttribute('id', `product-${product.id}`);
 
       const box = document.importNode(template.content, true);
 
