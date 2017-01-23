@@ -17,6 +17,9 @@
     </div>
   </header>
 
+  <div class="cart">
+  </div>
+
   <div class="filters is-hide">
     <span class="filters-label">Categories</span>
     <div class="filters-list"></div>
@@ -67,6 +70,19 @@
   <section class="products">
   </section>
 
+  <template id="cart-product">
+    <div class="cart-product">
+      <figure class="cart-product-image">
+        <img src="" alt="">
+      </figure>
+      <span class="cart-product-name"></span>
+      <span class="cart-product-quantity"></span>
+      <span class="cart-product-delete">
+        <i class="fa fa-close"></i>
+      </span>
+    </div>
+  </template>
+
   <template id="filter">
     <div class="filter">
       <div class="filter-icon"></div>
@@ -79,18 +95,16 @@
   <template id="product">
     <div class="product">
       <div class="product-header">
-        <span class="product-price">$ 0.00</span>
+        <span class="product-price"></span>
         <button class="product-button-add button">Add</button>
       </div>
       <div class="product-info">
         <figure class="product-image">
-          <img src="http://lorempixel.com/200/100/food/" alt="">
+          <img src="" alt="">
         </figure>
-        <span class="product-name">Cheeseburger</span>
+        <span class="product-name"></span>
         <div class="product-categories"></div>
-        <p class="product-details">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni et, repudiandae aperiam atque veritatis vitae. Voluptates veritatis quam nulla aspernatur accusamus velit, non officia hic voluptatibus, ex commodi quae incidunt.
-        </p>
+        <p class="product-details"></p>
       </div>
     </div>
   </template>

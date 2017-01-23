@@ -10,6 +10,7 @@ const customFiltersButtons = document.querySelectorAll('.filter-custom');
 let customFilters = {};
 let filters = [];
 let priceFilter = {};
+let categories;
 
 function addCustomFilter(event) {
   const button = event.target;
@@ -33,7 +34,7 @@ function addCustomFilter(event) {
     if (!customFilters[filter.name]) {
       customFilters[filter.name] = filter.value;
     } else if (customFilters[filter.name] !== filter.value) {
-      customFilters[filter.name] = filter.value
+      customFilters[filter.name] = filter.value;
     } else {
       delete customFilters[filter.name];
     }
@@ -110,7 +111,7 @@ function createFilters() {
   if (!container.classList.contains('loaded')) {
     let template = document.querySelector('#filter');
 
-    window.categories.forEach((category) => {
+    categories.forEach((category) => {
       template.content.querySelector('.filter-label').textContent = category.name;
 
       const box = document.importNode(template.content, true);
@@ -131,10 +132,12 @@ function createFilters() {
     container.classList.add('loaded');
   }
 
-  filtersContainer.classList.remove('is-hide');
+  filtersContainer.classList.toggle('is-hide');
 }
 
-function init() {
+function init(globalCategories) {
+  categories = globalCategories;
+
   button.addEventListener('click', createFilters);
   applyButton.addEventListener('click', applyFilters);
 

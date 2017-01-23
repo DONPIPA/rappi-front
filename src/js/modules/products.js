@@ -1,43 +1,46 @@
 'use strict';
 
-const categoriesClass = require('./../core/constants').categoriesClass;
-const $cart = document.querySelector('.header-cart');
-
 let products;
 let categories;
-let cart = [];
+let cart;
 let totalProducts = 0;
+
+const categoriesClass = require('./../core/constants').categoriesClass;
+const $cart = document.querySelector('.header-cart');
 
 function addToCart(event) {
   const button = event.target;
   const id = button.getAttribute('product-id');
+  let product;
 
-  if (!cart[id]) {
-    cart[id] = {
-      id: id,
-      quantity: 1
-    };
+  product = {
+    id: id,
+    quantity: 1
+  };
+
+  const exist = cart.filter((productTemp) => {
+    return productTemp[0].id === id;
+  });
+
+  if (exist[0]) {
+    exist[0][0].quantity++;
   } else {
-    cart[id].quantity++;
+    cart.push(product);
   }
 
   totalProducts = 0;
 
-  Object.keys(cart).forEach((key) => {
-    totalProducts += cart[key].quantity;
+  cart.forEach((productTemp) => {
+    totalProducts += productTemp[0].quantity;
   });
 
   $cart.setAttribute('count', totalProducts);
 
-  if (cart.length > 0) {
+  if (totalProducts > 0) {
     $cart.classList.remove('empty');
   } else {
     $cart.classList.add('empty');
   }
-}
-
-function findCategory(category) {
-  return category.categori_id === this;
 }
 
 function generateProducts() {
@@ -46,17 +49,19 @@ function generateProducts() {
   if ('content' in document.createElement('template')) { // check template support
     let template = document.querySelector('#product');
 
-    products.forEach((product, index) => {
+    products.forEach((product) => {
       template.content.querySelector('.product-price').textContent = '$' + product.price;
       template.content.querySelector('.product-image img').src = product.img;
       template.content.querySelector('.product-name').textContent = product.name;
       template.content.querySelector('.product-details').textContent = product.description;
-      template.content.querySelector('.product-button-add').setAttribute('product-id', index);
+      template.content.querySelector('.product-button-add').setAttribute('product-id', product.id);
 
       const box = document.importNode(template.content, true);
 
       product.categories.forEach((category) => {
-        const categoryData = categories.find(findCategory, category);
+        const categoryData = categories.find((categoryTemp) => {
+          return categoryTemp.categori_id === category;
+        });
         const categoryClass = categoriesClass[categoryData.name];
         const icon = document.createElement('i');
         icon.classList.add('fa');
@@ -82,30 +87,12 @@ function generateProducts() {
   }
 }
 
-function loadData() {
-  fetch('data/products.json', {
-    method: 'get'
-  }).then((response) => {
-    if (response.status !== 200) {
-      console.error('ERROR, status code:', response.status);
-      return false;
-    }
+function init(shopCart, globalProducts, globalCategories) {
+  cart = shopCart;
+  products = globalProducts;
+  categories = globalCategories;
 
-    response.json().then((data) => {
-      categories = data.categories;
-      products = data.products;
-      window.categories = categories;
-
-      generateProducts();
-    });
-  }).catch((error) => {
-    console.error('ERROR', error);
-    return false;
-  });
-}
-
-function init() {
-  loadData();
+  generateProducts();
 }
 
 module.exports = {
