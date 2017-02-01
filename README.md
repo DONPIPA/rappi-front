@@ -20,4 +20,4 @@ And finally just run gulp
 gulp dev
 ```
 
-This will mount a dev server in http://localhost:3000/
+This will mount a dev server in [http://localhost:3000/](http://localhost:3000/)
