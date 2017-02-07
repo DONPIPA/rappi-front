@@ -3,8 +3,31 @@
 let categories;
 let products;
 
+function getUrl() {
+  const hashParameters = window.location.hash.slice(1).split('&');
+  let url = false;
+
+  hashParameters.forEach((rawValue) => {
+    const value = rawValue.split('=');
+
+    if (value[0] && value[0] === 'url') {
+      url = value[1];
+    }
+  });
+
+  return url;
+}
+
 function loadData() {
-  return fetch('data/products.json', {
+  const url = getUrl();
+
+  if (url) {
+    console.info('Using custom data url:', url);
+  } else {
+    console.info('Using default data url');
+  }
+
+  return fetch((url) ? url : 'data/products.json', {
     method: 'get'
   }).then((response) => {
     if (response.status !== 200) {
