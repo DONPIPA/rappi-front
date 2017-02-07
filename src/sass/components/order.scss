@@ -1,0 +1,51 @@
+.order-container {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 1000px;
+}
+
+.order-sort-wrapper {
+  font-size: 12px;
+  line-height: 1.3;
+  padding: 10px;
+  position: relative;
+}
+
+// .order-sort-label {}
+
+.order-sort-icon {
+  background-color: $gray-dark;
+  border-radius: 20px;
+  border: 0;
+  box-sizing: border-box;
+  color: $gray;
+  cursor: pointer;
+  line-height: 2;
+  margin: 0 5px;
+  outline: 0;
+  padding: 0 10px;
+
+  &.is-active {
+    background-color: $red;
+    color: $white;
+  }
+
+  .fa {
+    pointer-events: none;
+  }
+}
+
+.order-search-wrapper {
+  display: flex;
+  font-size: 18px;
+}
+
+.order-search {
+  line-height: 1.3;
+  padding: 10px 0 10px 10px;
+}
+
+.order-search-container {
+  padding: 10px;
+}

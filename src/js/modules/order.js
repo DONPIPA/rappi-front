@@ -6,9 +6,7 @@ let order = {
   direction: null
 };
 
-const $button = document.querySelector('.header-sort');
-const $buttons = document.querySelectorAll('.header-sort-icon');
-const $box = document.querySelector('.header-sort-box');
+const $buttons = document.querySelectorAll('.order-sort-icon');
 
 function nameASC(productA, productB) {
   const nameA = productA.name.toUpperCase();
@@ -70,34 +68,51 @@ function setOrder(arrayOrder) {
   });
 }
 
-function openSort() {
-  $box.classList.toggle('is-open');
-}
-
 function sortProducts(event) {
   const $currentButton = event.target;
+  const $icon = $currentButton.querySelector('.fa');
+
+  let iconClass = '';
   let array;
+
+  $buttons.forEach(($button) => {
+    const $buttonIcon = $button.querySelector('.fa');
+
+    $button.classList.remove('is-active');
+    $buttonIcon.classList.remove('fa-caret-up', 'fa-caret-down');
+  });
+
+  $currentButton.classList.add('is-active');
 
   order.type = $currentButton.getAttribute('type');
   order.direction = (order.direction) ? (order.direction === 'asc') ? 'des' : 'asc' : 'asc';
 
-  console.log(order.direction);
+  console.log(order);
 
   switch (`${order.type}|${order.direction}`) {
     case 'name|asc':
       array = products.sort(nameASC);
+      iconClass = 'up';
       break;
     case 'name|des':
       array = products.sort(nameDES);
+      iconClass = 'down';
       break;
     case 'price|asc':
       array = products.sort(priceASC);
+      iconClass = 'up';
       break;
     case 'price|des':
       array = products.sort(priceDES);
+      iconClass = 'down';
       break;
     default:
       array = products.sort(nameASC);
+      iconClass = 'up'
+  }
+
+  if ($icon) {
+    $icon.classList.add(`fa-caret-${iconClass}`);
   }
 
   setOrder(array);
@@ -106,17 +121,9 @@ function sortProducts(event) {
 function init(globalProducts) {
   products = globalProducts;
 
-  $button.addEventListener('click', openSort);
-
   $buttons.forEach(($tempButton) => {
     $tempButton.addEventListener('click', sortProducts);
   });
-
-  // setOrder(products.sort(nameASC));
-  // console.log(products.sort(nameASC));
-  // console.log(products.sort(nameDES));
-  // console.log(products.sort(priceASC));
-  // console.log(products.sort(priceDES));
 }
 
 module.exports = {

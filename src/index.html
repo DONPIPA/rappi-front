@@ -9,26 +9,13 @@
 </head>
 <body>
   <header class="header">
-    <div class="header-button">
-      <i class="fa fa-filter"></i>
-    </div>
-    <div class="header-sort-wrapper">
-      <div class="header-sort">
-        <i class="fa fa-sort"></i>
+    <div class="header-wrapper">
+      <div class="header-button">
+        <i class="fa fa-filter"></i>
       </div>
-      <div class="header-sort-box">
-        <div class="header-sort-container">
-          <span class="header-sort-icon" type="name">
-            A
-          </span>
-          <span class="header-sort-icon" type="price">
-            $
-          </span>
-        </div>
+      <div class="header-cart empty">
+        <i class="fa fa-shopping-basket"></i>
       </div>
-    </div>
-    <div class="header-cart empty">
-      <i class="fa fa-shopping-basket"></i>
     </div>
   </header>
 
@@ -79,6 +66,28 @@
 
     <div class="filters-cta">
       <button class="filters-button-apply button">Apply</button>
+    </div>
+  </div>
+
+  <div class="order-container">
+    <div class="order-sort-wrapper">
+      <span class="order-sort-label">Order by</span>
+      <button class="order-sort-icon" type="name">
+        Name
+        <i class="fa"></i>
+      </button>
+      <button class="order-sort-icon" type="price">
+        Price
+        <i class="fa"></i>
+      </button>
+    </div>
+    <div class="order-search-wrapper">
+      <div class="order-search">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="order-search-container">
+        <input type="text" class="order-search-input" placeholder="search product">
+      </div>
     </div>
   </div>
 
