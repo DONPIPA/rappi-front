@@ -87,8 +87,6 @@ function sortProducts(event) {
   order.type = $currentButton.getAttribute('type');
   order.direction = (order.direction) ? (order.direction === 'asc') ? 'des' : 'asc' : 'asc';
 
-  console.log(order);
-
   switch (`${order.type}|${order.direction}`) {
     case 'name|asc':
       array = products.sort(nameASC);
