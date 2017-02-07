@@ -21,3 +21,9 @@ gulp dev
 ```
 
 This will mount a dev server in [http://localhost:3000/](http://localhost:3000/)
+
+## Config
+
+On every environment you can use a custom url to load data, just add #url=[url].
+
+[http://strifer.link/rappi-front/#url=[customUrl]](http://strifer.link/rappi-front/#url=[customUrl])
