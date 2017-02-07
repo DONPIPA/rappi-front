@@ -83,6 +83,16 @@ function generateProducts() {
       box.querySelector('.product').setAttribute('price', parseFloat(product.price, 10) * 1000);
       box.querySelector('.product-button-add').addEventListener('click', addToCart);
 
+      console.log(product);
+
+      if (!product.available) {
+        box.querySelector('.product-button-add').setAttribute('disabled', true);
+      }
+
+      if (product.best_seller) {
+        box.querySelector('.product-badge').classList.add('is-show');
+      }
+
       container.appendChild(box);
     });
   }
