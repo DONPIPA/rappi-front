@@ -77,7 +77,6 @@ function init(shopCart, globalProducts) {
   products = globalProducts;
 
   $button.addEventListener('click', openCart);
-  console.log('cart init');
 }
 
 module.exports = {

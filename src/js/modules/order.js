@@ -106,7 +106,7 @@ function sortProducts(event) {
       break;
     default:
       array = products.sort(nameASC);
-      iconClass = 'up'
+      iconClass = 'up';
   }
 
   if ($icon) {

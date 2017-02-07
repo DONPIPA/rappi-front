@@ -1,8 +1,13 @@
 .order-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: auto;
   max-width: 1000px;
+
+  @media #{$breakpoint-md} {
+    justify-content: space-between;
+  }
 }
 
 .order-sort-wrapper {
@@ -16,13 +21,13 @@
 
 .order-sort-icon {
   background-color: $gray-dark;
-  border-radius: 20px;
   border: 0;
+  border-radius: 20px;
   box-sizing: border-box;
   color: $gray;
   cursor: pointer;
   line-height: 2;
-  margin: 0 5px;
+  margin-left: 5px;
   outline: 0;
   padding: 0 10px;
 

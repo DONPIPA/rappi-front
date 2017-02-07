@@ -7,6 +7,7 @@ const products = require('./modules/products');
 const filters = require('./modules/filters');
 const cart = require('./modules/cart');
 const order = require('./modules/order');
+const search = require('./modules/search');
 
 const cartHandler = {
   set: (target, key, value) => {
@@ -48,6 +49,7 @@ function init() {
     cart.init(shopCart, globalProducts);
     filters.init(globalCategories);
     order.init(globalProducts);
+    search.init(globalProducts);
   });
 }
 
